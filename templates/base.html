@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Generated Slides</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 80px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+        h1 { font-size: 3.5rem; color: #0056b3; margin-bottom: 20px; border-left: 10px solid #0056b3; padding-left: 20px; }
+        p { font-size: 1.8rem; line-height: 1.6; white-space: pre-wrap; }
+        ul { font-size: 1.8rem; line-height: 1.8; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 1.5rem; }
+        th { background: #0056b3; color: white; padding: 15px; text-align: left; }
+        td { border-bottom: 1px solid #ddd; padding: 15px; }
+        footer {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            background: #0056b3; color: white;
+            padding: 10px 40px; box-sizing: border-box;
+            display: flex; justify-content: space-between; font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    {% for slide in slides %}
+        <div class="slide">
+            {% include slide.layout + ".html" %}
+            <footer>
+                <span>JSONを利用した自動スライド生成</span>
+                <span>Slide {{ loop.index }}</span>
+            </footer>
+        </div>
+    {% endfor %}
+</body>
+</html>
